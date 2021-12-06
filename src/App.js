@@ -1,23 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import { Pokecard } from './components/pokemon/Pokecard';
+
+import { Navbar } from './components/ui/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="row">
+          <div className="col">
+              <Navbar />
+          </div>                
+      </div>
+      <div className="row m-2">
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+      </div>
+      <div className="row m-2">
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+      </div>
+      <div className="row m-2">
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+        <div className="col">
+          <Pokecard />
+        </div>
+      </div>  
     </div>
   );
 }
