@@ -5,7 +5,7 @@ import { fetchManage } from "../helper/fetch";
 export const pokemonStartLoading = () => {
     return async (dispatch) => {
         try {
-            const resp = await fetchManage('https://pokeapi.co/api/v2/pokemon?limit=24&offset=0');
+            const resp = await fetchManage('https://pokeapi.co/api/v2/pokemon?limit=24&offset=96');
             const body = await resp.json();
             const list = body.results;
 
