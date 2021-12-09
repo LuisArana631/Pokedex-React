@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import './Pokecard.css';
 
-export const Pokecard = () => {
+export const Pokecard = ({ name, id, types, base, weight, height }) => {
     const [flipped, setFlipped] = useState(false);
     let pokedex = new Pokedex();
 
@@ -21,24 +21,27 @@ export const Pokecard = () => {
                 transition={{ type: "spring", stiffness: 100 }} >
                 <div className="pokemon-img-container img-container abs-center">
                     <img
-                    src={pokedex.pokemon(1).sprites.animated}
-                    alt={pokedex.pokemon(1).name}
+                    src={pokedex.pokemon(id).sprites.animated}
+                    alt={name}
                     className="pokemon-img"
                     />
                 </div>
                 <div className="card-body">
                     <div className="card-top">
-                        <h4>{pokedex.pokemon(1).name}</h4>
-                        <div className="num-container">1</div>
+                        <h4>{ name }</h4>
+                        <div className="num-container"> {id} </div>
                     </div>
                     <div className="card-bottom card-footer">
-                        <div className="pokemon-type">                        
-                            <div key="planta" className="pokemon-type-text">
-                                <span class="badge rounded-pill bg-plant"><small>Planta</small></span>
-                            </div>
-                            <div key="bicho" className="pokemon-type-text">
-                                <span class="badge rounded-pill bg-poison"><small>Veneno</small></span>
-                            </div>
+                        <div className="pokemon-type">   
+                            {
+                                types.map((type, idx) => {
+                                    return (
+                                        <div key={idx} className="pokemon-type-text">
+                                            <span className={`badge rounded-pill bg-${type.toLowerCase()}`}><small>{type}</small></span>
+                                        </div>
+                                    );
+                                })
+                            }                 
                         </div>
                     </div>
                 </div>
@@ -47,25 +50,25 @@ export const Pokecard = () => {
             <div className="pokemon-card" onClick={handleClick}>
                 <div className="pokemon-img-container img-container abs-center">
                     <img
-                    src={pokedex.pokemon(1).sprites.animated}
-                    alt={pokedex.pokemon(1).name}
+                    src={pokedex.pokemon(id).sprites.animated}
+                    alt={name}
                     className="pokemon-img"
                     />
                 </div>
                 <div className="card-body">
                     <div className="row pl-3">
                         <div className="colsm">
-                            <span>Base Experience: <b>64</b></span>    
+                            <span>Base Experience: <b> {base} </b></span>    
                         </div>
                     </div>                    
                     <div className="row pl-3">
                         <div className="colsm">
-                            <span>Weight: <b>69</b></span>    
+                            <span>Weight: <b> {weight} </b></span>    
                         </div>
                     </div>    
                     <div className="row pl-3">
                         <div className="colsm">
-                            <span>Height: <b>7</b></span>    
+                            <span>Height: <b> {height} </b></span>    
                         </div>
                     </div>    
                 </div>

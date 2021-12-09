@@ -1,59 +1,24 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 import './App.css';
-import { Pokecard } from './components/pokemon/Pokecard';
 
 import { Navbar } from './components/ui/Navbar';
+import { Pokedex } from './components/pokemon/Pokedex';
 
-function App() {
+export const App = () =>  {
   return (
-    <div>
-      <div className="row">
-          <div className="col">
-              <Navbar />
-          </div>                
+    <Provider store={ store }>
+      <div>
+        <div className="row">
+            <div className="col">
+                <Navbar />
+            </div>                
+        </div>
+        <Pokedex/>
       </div>
-      <div className="row m-2">
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-      </div>
-      <div className="row m-2">
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-      </div>
-      <div className="row m-2">
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-        <div className="col">
-          <Pokecard />
-        </div>
-      </div>  
-    </div>
+    </Provider>
   );
 }
 
