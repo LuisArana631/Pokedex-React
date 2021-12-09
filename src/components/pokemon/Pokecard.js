@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import './Pokecard.css';
 
-export const Pokecard = ({ name, id, types, base, weight, height }) => {
+export const Pokecard = ({ name, id, types, base_experience, weight, height }) => {
     const [flipped, setFlipped] = useState(false);
     let pokedex = new Pokedex();
 
@@ -34,10 +34,10 @@ export const Pokecard = ({ name, id, types, base, weight, height }) => {
                     <div className="card-bottom card-footer">
                         <div className="pokemon-type">   
                             {
-                                types.map((type, idx) => {
+                                types.map((type_item, idx) => {
                                     return (
                                         <div key={idx} className="pokemon-type-text">
-                                            <span className={`badge rounded-pill bg-${type.toLowerCase()}`}><small>{type}</small></span>
+                                            <span className={`badge rounded-pill bg-${type_item.type.name.toLowerCase()}`}><small>{type_item.type.name}</small></span>
                                         </div>
                                     );
                                 })
@@ -58,7 +58,7 @@ export const Pokecard = ({ name, id, types, base, weight, height }) => {
                 <div className="card-body">
                     <div className="row pl-3">
                         <div className="colsm">
-                            <span>Base Experience: <b> {base} </b></span>    
+                            <span>Base Experience: <b> {base_experience} </b></span>    
                         </div>
                     </div>                    
                     <div className="row pl-3">
