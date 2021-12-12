@@ -7,3 +7,8 @@ export const uiLoadingGrid = () => ({
 export const uiEndLoadingGrid = () => ({
     type: types.endLoadingGrid
 });
+
+export const uiChangePage = (new_page) => ({
+    type: types.changePage,
+    payload: new_page
+});

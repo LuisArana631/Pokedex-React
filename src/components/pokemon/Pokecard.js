@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import './Pokecard.css';
 
-export const Pokecard = ({ name, id, types, base_experience, weight, height }) => {
+export const Pokecard = ({ name, id, types, base_experience, weight, height, sprites }) => {
     const [flipped, setFlipped] = useState(false);
     let pokedex = new Pokedex();
 
@@ -20,11 +20,22 @@ export const Pokecard = ({ name, id, types, base_experience, weight, height }) =
                 animate={{ opacity: 1 }} 
                 transition={{ type: "spring", stiffness: 100 }} >
                 <div className="pokemon-img-container img-container abs-center">
-                    <img
-                    src={pokedex.pokemon(id).sprites.animated}
-                    alt={name}
-                    className="pokemon-img"
-                    />
+                    {
+                        id <= 649 ? 
+                        (
+                            <img
+                            src={pokedex.pokemon(id).sprites.animated}
+                            alt={name}
+                            className="pokemon-img"
+                            />
+                        ) : (
+                            <img
+                            src={sprites.front_default}
+                            alt={name}
+                            className="pokemon-img"
+                            />
+                        )   
+                    }
                 </div>
                 <div className="card-body">
                     <div className="card-top">
@@ -49,11 +60,22 @@ export const Pokecard = ({ name, id, types, base_experience, weight, height }) =
 
             <div className="pokemon-card" onClick={handleClick}>
                 <div className="pokemon-img-container img-container abs-center">
-                    <img
-                    src={pokedex.pokemon(id).sprites.animated}
-                    alt={name}
-                    className="pokemon-img"
-                    />
+                    {
+                        id <= 649 ? 
+                        (
+                            <img
+                            src={pokedex.pokemon(id).sprites.animated}
+                            alt={name}
+                            className="pokemon-img"
+                            />
+                        ) : (
+                            <img
+                            src={sprites.front_default}
+                            alt={name}
+                            className="pokemon-img"
+                            />
+                        )   
+                    }
                 </div>
                 <div className="card-body">
                     <div className="row pl-3">

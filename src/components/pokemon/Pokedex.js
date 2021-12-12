@@ -8,13 +8,13 @@ import loadingGif from './loading.gif';
 import { pokemonStartLoading } from '../../actions/pokemon';
 
 export const Pokedex = () => {
-    const { loadingState } = useSelector( state => state.ui );
+    const { loadingState, actualPage } = useSelector( state => state.ui );
     const { pokemons } = useSelector(state => state.pokemon );
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch( pokemonStartLoading() );
-    }, [dispatch]);
+        dispatch( pokemonStartLoading(24, 24 * actualPage ) );        
+    }, [dispatch, actualPage]);
 
     return (
         <div className="mt-3 ml-2 mr-2">

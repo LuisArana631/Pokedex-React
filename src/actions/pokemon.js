@@ -1,11 +1,14 @@
 import { types } from '../types/types';
 
 import { fetchManage } from "../helper/fetch";
+import { uiEndLoadingGrid, uiLoadingGrid } from './ui';
 
-export const pokemonStartLoading = () => {
+export const pokemonStartLoading = (limit, offset) => {
     return async (dispatch) => {
         try {
-            const resp = await fetchManage('https://pokeapi.co/api/v2/pokemon?limit=24&offset=96');
+            dispatch( uiLoadingGrid() );
+
+            const resp = await fetchManage(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
             const body = await resp.json();
             const list = body.results;
 
@@ -18,8 +21,8 @@ export const pokemonStartLoading = () => {
             }
 
             dispatch( pokemonLoaded(arrayReturn));
-            
-            
+
+            dispatch( uiEndLoadingGrid() );
         }catch(err){
             console.log(err);
         }
